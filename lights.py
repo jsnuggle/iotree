@@ -7,7 +7,6 @@ class Lights:
         self.__initOutputs()
         self.__initInputs()
 
-
     def initOutputs(self):
 
         outputWhite = digitalio.DigitalInOut(board.D23)
@@ -22,7 +21,7 @@ class Lights:
         self.outputs = {
             'white': outputWhite,
             'color': outputColor,
-            'change': outputChange
+            'party': outputChange
         }
 
     def initInputs(self):
@@ -33,7 +32,10 @@ class Lights:
         self.button = button
 
     def activateChannel(self, channel):
-        #todo: add bounds check
+        if channel not in self.outputs: 
+            print("invalid channel selected ({}) -- please try again".format(channel))
+            return
+
         self.activeChannel = self.outputs.get(channel)
         self.deactivateAll()
         print('turning on {} channel'.format(channel))
@@ -46,4 +48,4 @@ class Lights:
     __initOutputs = initOutputs
     __initInputs = initInputs
 
-lights = Lights()
+control = Lights()
