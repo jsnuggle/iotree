@@ -1,12 +1,8 @@
-#todo: move to config file
-
 from Adafruit_IO import MQTTClient
 
 import sys
 from secrets import ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY
 from Adafruit_IO import MQTTClient
-
-#todo: move these callbacks out of this file
 
 # MQTT Callback functions:
 
@@ -28,6 +24,9 @@ class AFIOClient :
 
     def listen(self):
         self.mqttClient.loop_blocking()
+
+    def listen_background(self):
+        self.mqttClient.loop_background()
 
 # Connect to the Adafruit IO server.
 #client.connect()
