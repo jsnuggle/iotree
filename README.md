@@ -81,7 +81,7 @@ and that's it for connections.
 ## System Setup
 Clone this project to the directory of your choice on your raspberry pi:
 ```
-git clone XXX 
+git clone git@github.com:jsnuggle/iotree.git 
 ```
 
 Make sure your system has an up to date copy of python3 and pip3. Run the
