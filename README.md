@@ -8,6 +8,7 @@ lazy, and our tree is right next to our Google Home so I wanted to see if
 I could wire them together.
 
 ## Parts Needed
+- Google Home (or Alexa)
 - Lights (I used [Sylvania 3-Function Color Change - SNKS-1-2](https://www.amazon.com/Sylvania-3-Function-Color-Changing-Lights/dp/B01LZE6N23))
 - Raspberry Pi with power supply + network connection
 - GPIO Breakout
