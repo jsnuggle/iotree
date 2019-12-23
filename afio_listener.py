@@ -1,5 +1,10 @@
-from Adafruit_IO import MQTTClient
+"""
+Client convenience wrapper for Adafruit IO communication using MQTTClient
 
+For complete details see: https://github.com/adafruit/Adafruit_IO_Python
+
+requires: Adafruit_IO
+"""
 import sys
 from secrets import ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY
 from Adafruit_IO import MQTTClient
@@ -22,16 +27,11 @@ class AFIOClient :
     def connect(self):
         self.mqttClient.connect()
 
+    # Listen on the main thread - process blocking
     def listen(self):
         self.mqttClient.loop_blocking()
 
+    # Listen in the background -- don't block the main loop
     def listen_background(self):
         self.mqttClient.loop_background()
 
-# Connect to the Adafruit IO server.
-#client.connect()
-
-# Start a message loop that blocks forever waiting for MQTT messages to be
-# received.  Note there are other options for running the event loop like doing
-# so in a background thread--see the mqtt_client.py example to learn more.
-#client.loop_blocking()
