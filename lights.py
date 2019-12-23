@@ -10,7 +10,6 @@ class Lights:
 
     def __init__(self):
         self.__initOutputs()
-        self.__initInputs()
         self.default_channel_name = 'white'
         self.activeChannel = None
 
@@ -66,6 +65,5 @@ class Lights:
         self.deactivateAll()
 
     __initOutputs = initOutputs
-    __initInputs = initInputs
 
 control = Lights()
