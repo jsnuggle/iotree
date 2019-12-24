@@ -10,7 +10,7 @@ with 3-channel switcher (white, colored, alternating).
 """
 import lights
 import json
-from config import ADAFRUIT_IO_FEED_KEY
+from config import ADAFRUITIO_COMMAND_FEED_KEY
 from afio_listener import AFIOClient
 
 print("Welcome to Christmas!")
@@ -53,8 +53,8 @@ def executeCommand(command):
 
 def onConnect(client):
     # Function called when Adafruit IO connection is established
-    print('Listening for \'{0}\' changes...'.format(ADAFRUIT_IO_FEED_KEY))
-    client.subscribe(ADAFRUIT_IO_FEED_KEY)
+    print('Listening for \'{0}\' changes...'.format(ADAFRUITIO_COMMAND_FEED_KEY))
+    client.subscribe(ADAFRUITIO_COMMAND_FEED_KEY)
 
 def onDisconnect(client):
     # Disconnected function will be called when the client disconnects.

@@ -40,7 +40,7 @@ I'll show you how to set up each of these components separtely.
 Visit [adafruit.io](http://adafruit.io). If you don't already have an account, 
 set one up. This system doesn't send a ton of data, so a free account is totally
 fine. After you've logged in, set up a new feed. The feed I set up for this
-project is called Google Assistant (google-assistant), but you can name it
+project is called IOTree Commands (iotree-commands), but you can name it
 what you like and update the value in config.py.
 
 Be sure to copy your Adafruit IO **username** and **API key** - youll need 
@@ -59,7 +59,7 @@ to $' where $ is a text ingredient.
 Next, add **Adafruit** as an action service. Again you'll need to connect IFTTT
 to Adafruit if you haven't already. Once you have, you'll select the action 
 **'Send data to Adafruit IO'**. You should see the feed you created in the dropdown
-(for me 'Google Assistant') -- select that feed and add the following to the 
+(for me 'IOTree Commands') -- select that feed and add the following to the 
 Data to save field: 
 ```
 {"execute":"color_change", "arg":"{{TextField}}"}

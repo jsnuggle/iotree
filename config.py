@@ -1,1 +1,1 @@
-ADAFRUIT_IO_FEED_KEY = "google-assistant"
+ADAFRUITIO_COMMAND_FEED_KEY = "iotree-commands"

@@ -15,9 +15,10 @@ stop)
     ;;
 
 restart)
-    echo "restarting server in: $SERVER_DIR with tmux session: $TMUX_SESSION"
+    echo "stopping server in: $SERVER_DIR / tmux session: $TMUX_SESSION"
     cd $SERVER_DIR
     sudo -u $USER ./bin/killTmux.sh
+    echo "starting server in: $SERVER_DIR in tmux session: $TMUX_SESSION"
     sudo -u $USER ./bin/runTmux.sh
     ;;
 *)
