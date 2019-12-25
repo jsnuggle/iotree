@@ -10,12 +10,14 @@ with 3-channel switcher (white, colored, alternating).
 """
 import lights
 import json
-from config import ADAFRUITIO_COMMAND_FEED_KEY
-from afio_listener import AFIOClient
+from config import ADAFRUITIO_COMMAND_FEED_KEY, ADAFRUITIO_STATUS_FEED_KEY
+from afio_client_wrapper import AFIOClient
+from secrets import ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY
 
 print("Welcome to Christmas!")
 
 lights.control.power_on()
+aio_client = AFIOClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
 def onMessage(client, feed_id, payload):
     # Listener for messages from Adafruit IO Feed
@@ -35,7 +37,7 @@ def executeCommand(command):
     * power: (on|off)
     """
     directive = command['execute'].strip()
-    arg = command['arg'].strip()
+    arg = command['arg'].strip() if 'arg' in command else None
 
     if (directive == 'color_change'):
         print("Set color: {0}".format(arg))
@@ -48,6 +50,10 @@ def executeCommand(command):
             lights.control.power_on()
         else:
             lights.control.power_off()
+    elif (directive == 'get_status'):
+        status_str = lights.control.get_status()
+        print("Get status: %s" % status_str)
+        aio_client.publish_status(ADAFRUITIO_STATUS_FEED_KEY, status_str)
     else:
         print('Invalid directive:\'{0}\''.format(directive))
 
@@ -61,6 +67,4 @@ def onDisconnect(client):
     print('Disconnected from Adafruit IO!')
     sys.exit(1)
 
-afio = AFIOClient(onConnect, onMessage, onDisconnect)
-afio.connect()
-afio.listen()
+aio_client.pubsub_feed_listen(onConnect, onMessage, onDisconnect)

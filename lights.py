@@ -64,6 +64,24 @@ class Lights:
         # Power off the lights
         self.deactivateAll()
 
+    def are_lights_on(self):
+        for o in self.outputs.values():
+            if (o.value == True):
+                return True
+                break
+        return False
+
+    def get_active_channel_color(self):
+        for key,channel in self.outputs.items():
+            if (self.activeChannel == channel):
+                return key
+        return None
+
+    def get_status(self):
+        active_color = self.get_active_channel_color()
+        lights_on_str = "on" if self.are_lights_on() else "off"
+        return 'The selected color mode is %s and the lights are %s' % (active_color, lights_on_str)
+
     __initOutputs = initOutputs
 
 control = Lights()
